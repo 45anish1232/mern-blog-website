@@ -5,12 +5,12 @@ export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/blogs")
+    axios.get("https://mern-blog-website-1-7x63.onrender.com/api/blogs")
       .then(res => setBlogs(res.data));
   }, []);
 
   const deleteBlog = async (id) => {
-    await axios.delete(`http://localhost:8000/api/blogs/${id}`);
+    await axios.delete(`https://mern-blog-website-1-7x63.onrender.com/api/blogs/${id}`);
     setBlogs(blogs.filter(blog => blog._id !== id));
   };
 

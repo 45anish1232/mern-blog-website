@@ -10,7 +10,7 @@ export default function BlogForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8000/api/blogs", blog);
+    await axios.post("https://mern-blog-website-1-7x63.onrender.com/api/blogs", blog);
     window.location.reload();
   };
 
