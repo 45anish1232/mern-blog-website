@@ -7,19 +7,25 @@ const blogRoutes = require("./routes/blogRoutes");
 
 const app = express();
 
-// 🔥 Allow ALL origins temporarily (development fix)
 app.use(cors());
-
 app.use(express.json());
+
+// Root route (important for Render testing)
+app.get("/", (req, res) => {
+  res.send("🚀 MERN Blog Backend is Running");
+});
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
-// Correct route base
+// Routes
 app.use("/api/blogs", blogRoutes);
 
-app.listen(8000, () => {
-  console.log("Server running on port 8000");
+// 🔥 VERY IMPORTANT FOR RENDER
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
